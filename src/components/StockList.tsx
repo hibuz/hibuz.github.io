@@ -15,7 +15,7 @@ const columns: ColDef[] = [
     field: 'market_cap_ko',
     headerName: '시총(KRW)',
     description: '실시간 원화 환율 적용',
-    width: 150,
+    width: 100,
     sortable: false,
     valueFormatter: ({value}) => value + ' 조원'
   },
@@ -23,7 +23,7 @@ const columns: ColDef[] = [
     field: 'market_cap_en',
     headerName: '시총(USD)',
     description: '실시간 달러 환율 적용',
-    width: 150,
+    width: 120,
     sortable: false,
     valueFormatter: ({value}) => value + ' 억달러'
   }
@@ -40,7 +40,7 @@ function Company(props: any){
 
 export default function StockList({rows}: any) {
     const onRowClick = (param: RowParams) => {
-      window.open('https://www.google.com/search?q=' + param.getValue('exchange') + ':' + param.getValue('symbol') + '&tbm=fin', 'google_fin');
+      window.open('https://finance.google.com/finance?q=' + param.getValue('exchange') + ':' + param.getValue('symbol') + '&tbm=fin', 'google_fin');
     }
 
     return (
