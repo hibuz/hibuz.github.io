@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import StockList from './components/StockList';
+// @ts-ignore
+import PublicGoogleSheetsParser from 'public-google-sheets-parser';
 
 const App = () => {
   const [stockList, setStockList] = useState(null);
 
   function fetchStockData() {
-    fetch('https://api.fureweb.com/spreadsheets/1aXzns9mgucWf2hv0nORnFqmN6KuxNl9FTFXjIHNYeg4')
-      .then((res) => res.json())
-      .then(res => {
-        const data = res.data
-          .sort((a: any, b: any) => a.id > b.id ? 1 : -1)
+
+    const parser = new PublicGoogleSheetsParser();
+    parser.parse(atob('MWFYem5zOW1ndWNXZjJodjBuT1JuRnFtTjZLdXhObDlGVEZYaklITlllZzQ'))
+      .then((res: any) => {
+        const data = res.sort((a: any, b: any) => a.id > b.id ? 1 : -1)
           .slice(0, 20);
-          setStockList(data)
+        setStockList(data)
     });
   }
 
