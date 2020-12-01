@@ -12,7 +12,7 @@ const columns: ColDef[] = [
   },
   { field: 'currency', headerName: '통화', width: 70 },
   {
-    field: 'market_cap_ko',
+    field: 'marketcap_krw',
     headerName: '시총(KRW)',
     description: '실시간 원화 환율 적용',
     width: 100,
@@ -20,7 +20,7 @@ const columns: ColDef[] = [
     valueFormatter: ({value}) => value + ' 조원'
   },
   {
-    field: 'market_cap_en',
+    field: 'marketcap_usd',
     headerName: '시총(USD)',
     description: '실시간 달러 환율 적용',
     width: 120,
