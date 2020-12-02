@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import StockList from './components/StockList';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
 // @ts-ignore
 import PublicGoogleSheetsParser from 'public-google-sheets-parser';
+
+import StockList from './components/StockList';
 
 const App = () => {
   const [stockList, setStockList] = useState(null);
@@ -21,9 +26,34 @@ const App = () => {
     fetchStockData();
   }, []);
 
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      date: {
+        marginLeft: 40,
+      },
+    }),
+  );
+
+  const classes = useStyles();
+
+  function today() {
+    const date = new Date();
+    var yyyy = date.getFullYear().toString();
+    var mm = (date.getMonth() + 1).toString();
+    var dd = date.getDate().toString();
+    return  yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]);
+  }
+
   return (
     <div>
-      <h2>전세계 기업 시가총액 Top 20 순위</h2>
+      <Toolbar disableGutters>
+        <Typography variant="h6">
+          전세계 기업 시총 TOP20
+        </Typography>
+        <Typography variant="caption" className={classes.date} noWrap>
+          {today()}
+        </Typography>
+      </Toolbar>
       {stockList != null && <StockList rows={stockList}/>}
     </div>
   )
