@@ -14,20 +14,23 @@ const columns: ColDef[] = [
   },
   {
     field: 'marketcap_krw',
-    headerName: '시총(₩)',
+    headerName: '시가총액(₩)',
     description: '실시간 원화 환율 적용',
-    width: 102,
+    width: 112,
+    cellClassName: 'align-right',
     sortable: false,
-    valueFormatter: ({value}) => Number(value).toLocaleString() + ' 조원'
+    valueFormatter: ({value}) => Number(value).toLocaleString() + '조원'
   },
   {
     field: 'marketcap_usd',
-    headerName: '시총($)',
+    headerName: '시가총액($)',
     description: '실시간 달러 환율 적용',
-    width: 98,
+    width: 134,
+    cellClassName: 'align-right',
     sortable: false,
     valueFormatter: ({value}) =>
-      '$' + (Number(value) >= 10000 ? Number(value)/1000 + '조' : Number(value).toLocaleString() + '억')
+      (Number(value) < 10000 ? Number(value).toLocaleString()
+        : Math.floor(Number(value)/10000) + '조' + Number(String(value).substr(1)).toLocaleString()) + '억달러'
   },
   { field: 'company', headerName: '영문이름', width: 250 },
   { field: 'price',
