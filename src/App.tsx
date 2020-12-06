@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 
 // @ts-ignore
 import PublicGoogleSheetsParser from 'public-google-sheets-parser';
+// @ts-ignore
+import Spinner from 'react-spinkit';
 
 import StockList from './components/StockList';
 
@@ -54,7 +56,7 @@ const App = () => {
           {today()}
         </Typography>
       </Toolbar>
-      {stockList != null && <StockList rows={stockList}/>}
+      {stockList != null ? <StockList rows={stockList}/> : <p style={{margin: 30 }}>데이터 조회중... <Spinner name='pacman' color="coral"/></p>}
     </div>
   )
 }
