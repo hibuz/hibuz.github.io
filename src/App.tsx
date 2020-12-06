@@ -53,10 +53,10 @@ const App = () => {
           전세계 기업 시총 TOP20
         </Typography>
         <Typography variant="caption" className={classes.date} noWrap>
-          {today()}
+          {today()} <a href="https://github.com/hibuz/hibuz.github.io/issues/new" style={{textDecoration: 'none'}}>❔</a>
         </Typography>
       </Toolbar>
-      {stockList != null ? <StockList rows={stockList}/> : <p style={{margin: 30 }}>데이터 조회중... <Spinner name='pacman' color="coral"/></p>}
+      {stockList != null ? <StockList rows={stockList}/> : <p style={{margin: 30 }}>데이터 조회중... <Spinner name='pacman' color="coral"/></p>} 
     </div>
   )
 }

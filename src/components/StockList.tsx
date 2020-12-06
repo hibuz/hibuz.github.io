@@ -3,7 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid, ColDef, CellParams, RowParams } from '@material-ui/data-grid';
 
 const columns: ColDef[] = [
-  { field: 'id', headerName: '순위', width: 62 },
+  { field: 'id',
+    headerName: '순위',
+    description: 'USD 시가총액 기준 순위',
+    width: 62
+  },
   { field: 'name_ko',
     headerName: '기업',
     headerAlign: 'center',
@@ -15,7 +19,7 @@ const columns: ColDef[] = [
   {
     field: 'marketcap_krw',
     headerName: '시가총액(₩)',
-    description: '실시간 원화 환율 적용',
+    description: '반올림된 USD기준 실시간 원화 환율을 적용 후 반올림',
     width: 112,
     cellClassName: 'align-right',
     sortable: false,
@@ -24,7 +28,7 @@ const columns: ColDef[] = [
   {
     field: 'marketcap_usd',
     headerName: '시가총액($)',
-    description: '실시간 달러 환율 적용',
+    description: 'USD 통화 종목이 아닌경우 실시간 달러 환율 적용 후 반올림',
     width: 134,
     cellClassName: 'align-right',
     sortable: false,
