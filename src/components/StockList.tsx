@@ -20,7 +20,7 @@ const columns: ColDef[] = [
     field: 'marketcap_krw',
     headerName: '시가총액(₩)',
     description: '반올림된 USD기준 실시간 원화 환율을 적용 후 반올림',
-    width: 112,
+    width: 140,
     cellClassName: 'align-right',
     sortable: false,
     valueFormatter: ({value}) => Number(value).toLocaleString() + '조원'
@@ -59,6 +59,8 @@ function Company(props: any){
 
 const useStyles = makeStyles({
   root: {
+    height: 1000,
+    width: '100%',
     '& .align-right': {
       textAlign: 'right',
     },
@@ -74,7 +76,7 @@ export default function StockList({rows}: any) {
   }
 
   return (
-    <div style={{ height: 1000, width: '100%' }} className={classes.root}>
+    <div className={classes.root}>
       <DataGrid rows={rows} columns={columns} onRowClick={onRowClick} hideFooter autoHeight />
     </div>
   )

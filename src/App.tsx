@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -11,11 +10,13 @@ import Spinner from 'react-spinkit';
 import StockList from './components/StockList';
 
 const App = () => {
+
   const [stockList, setStockList] = useState(null);
 
   function fetchStockData() {
 
     const parser = new PublicGoogleSheetsParser();
+
     parser.parse(atob('MWFYem5zOW1ndWNXZjJodjBuT1JuRnFtTjZLdXhObDlGVEZYaklITlllZzQ'))
       .then((res: any) => {
         const data = res.sort((a: any, b: any) => a.id > b.id ? 1 : -1)
@@ -28,21 +29,14 @@ const App = () => {
     fetchStockData();
   }, []);
 
-  const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-      date: {
-        marginLeft: 40,
-      },
-    }),
-  );
-
-  const classes = useStyles();
-
   function today() {
+
     const date = new Date();
+
     var yyyy = date.getFullYear().toString();
     var mm = (date.getMonth() + 1).toString();
     var dd = date.getDate().toString();
+
     return  yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]);
   }
 
@@ -52,11 +46,11 @@ const App = () => {
         <Typography variant="h6">
           전세계 기업 시총 TOP20
         </Typography>
-        <Typography variant="caption" className={classes.date} noWrap>
+        <Typography variant="caption" style={{ marginLeft: 40 }} noWrap>
           {today()} <a href="https://github.com/hibuz/hibuz.github.io/issues/new" style={{textDecoration: 'none'}}>❔</a>
         </Typography>
       </Toolbar>
-      {stockList != null ? <StockList rows={stockList}/> : <p style={{margin: 30 }}>데이터 조회중... <Spinner name='pacman' color="coral"/></p>} 
+      {stockList != null ? <StockList rows={stockList}/> : <p style={{ margin: 30 }}>데이터 조회중... <Spinner name='pacman' color="coral"/></p>} 
     </div>
   )
 }
