@@ -19,7 +19,8 @@ const App = () => {
 
     parser.parse(atob('MWFYem5zOW1ndWNXZjJodjBuT1JuRnFtTjZLdXhObDlGVEZYaklITlllZzQ'))
       .then((res: any) => {
-        const data = res.sort((a: any, b: any) => a.marketcap_usd < b.marketcap_usd ? 1 : -1)
+        const data = res.filter((item: any) => item.marketcap_usd)
+          .sort((a: any, b: any) => a.marketcap_usd < b.marketcap_usd ? 1 : -1)
           .map((item: any, index: number) => { item.id = index + 1; return item })
           .slice(0, 20);
         setStockList(data)

@@ -16,7 +16,6 @@ test('renders stock list data grid', async () => {
         .slice(0, 20);
 
       data.forEach(item => expect(item.rank).toBe(item.id));
-      console.log(data);
       return data;
   });
 
