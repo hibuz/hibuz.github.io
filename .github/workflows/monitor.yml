@@ -2,6 +2,7 @@ name: Monitor
 
 on:
   schedule:
+    # https://crontab.guru/#0_*_*_*_*
     - cron: '0 * * * *'
   push:
     branches:
