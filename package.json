@@ -30,7 +30,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "react-scripts build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "clean": "gh-pages-clean",
+    "monitor": "node monitor.js"
   },
   "eslintConfig": {
     "extends": [

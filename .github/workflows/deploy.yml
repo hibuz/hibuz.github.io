@@ -1,11 +1,13 @@
 name: Deployment
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         node-version: [12.x]
@@ -28,6 +30,9 @@ jobs:
 
     - name: Install dependencies
       run: yarn install --prod --pure-lockfile
+
+    - name: Test unit
+      run: yarn test
 
     - name: Build page
       run: yarn build

@@ -1,0 +1,25 @@
+name: Monitor
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  push:
+    branches:
+      - develop
+
+env:
+  GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+  SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+
+jobs:
+  monitor:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: monitor google sheet
+        run: |
+          res=`curl -s https://docs.google.com/spreadsheets/d/$GOOGLE_SHEET_ID/gviz/tq? | grep "#N/A" | wc -l`
+          if [[ $res == "1" ]]; then
+              curl -X POST --data-urlencode "payload={\"text\": \"check google sheets!\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+              exit 1
+          fi
