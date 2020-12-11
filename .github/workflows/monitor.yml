@@ -5,7 +5,7 @@ on:
     - cron: '0 * * * *'
   push:
     branches:
-      - develop
+      - main
 
 env:
   GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
