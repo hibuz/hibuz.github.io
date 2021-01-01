@@ -2,8 +2,8 @@ name: Monitor
 
 on:
   schedule:
-    # https://crontab.guru/#0_8_*_*_*
-    - cron: '0 8 * * *'
+    # UTC -> KST https://crontab.guru/#0_8_*_*_*
+    - cron: '0 23 * * *'
   push:
     branches:
       - main
