@@ -16,8 +16,7 @@ const App = () => {
   function fetchStockData() {
 
     const parser = new PublicGoogleSheetsParser();
-
-    parser.parse(atob('MWFYem5zOW1ndWNXZjJodjBuT1JuRnFtTjZLdXhObDlGVEZYaklITlllZzQ'))
+    parser.parse(atob('MW5SUEs1c1dBN1NvRWxkWEltdkdyRjJrMG85S1Q4eGxteC12dnpLVWZacVk'))
       .then((res: any) => {
         const data = res.filter((item: any) => item.marketcap_usd)
           .sort((a: any, b: any) => a.marketcap_usd < b.marketcap_usd ? 1 : -1)
