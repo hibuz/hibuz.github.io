@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { DataGrid, ColDef, CellParams, RowParams } from '@material-ui/data-grid';
+import { makeStyles } from '@mui/styles';
+import { DataGrid, GridColDef, GridCellParams, GridRowParams } from '@mui/x-data-grid';
 
-const columns: ColDef[] = [
+const columns: GridColDef[] = [
   { field: 'id',
     headerName: '순위',
     description: 'USD 시가총액 기준 순위',
@@ -11,8 +11,8 @@ const columns: ColDef[] = [
     headerName: '기업',
     headerAlign: 'center',
     width: 140,
-    renderCell: (params: CellParams) => (
-      <Company name={params.value} logo={params.getValue('logo')} />
+    renderCell: (params: GridCellParams) => (
+      <Company name={params.value} logo={params.row.logo} />
     )
   },
   {
@@ -70,8 +70,8 @@ export default function StockList({rows}: any) {
 
   const classes = useStyles();
 
-  const onRowClick = (param: RowParams) => {
-    window.open('https://finance.google.com/finance?q=' + param.getValue('exchange') + ':' + param.getValue('symbol') + '&tbm=fin', 'google_fin');
+  const onRowClick = (param: GridRowParams) => {
+    window.open('https://finance.google.com/finance?q=' + param.row.exchange + ':' + param.row.symbol + '&tbm=fin', 'google_fin');
   }
 
   return (

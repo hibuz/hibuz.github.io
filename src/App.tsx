@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 // @ts-ignore
 import PublicGoogleSheetsParser from 'public-google-sheets-parser';
@@ -17,7 +17,7 @@ const App = () => {
 
     const parser = new PublicGoogleSheetsParser();
 
-    const items = await parser.parse(atob('MWFYem5zOW1ndWNXZjJodjBuT1JuRnFtTjZLdXhObDlGVEZYaklITlllZzQ'))
+    const items = await parser.parse(Buffer.from('MWFYem5zOW1ndWNXZjJodjBuT1JuRnFtTjZLdXhObDlGVEZYaklITlllZzQ', 'base64'))
       .then((res: any) => {
         return res.filter((item: any) => item.marketcap_usd)
           .sort((a: any, b: any) => a.marketcap_usd < b.marketcap_usd ? 1 : -1)
