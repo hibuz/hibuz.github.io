@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders app title', () => {
+test('renders datagrid value', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/전세계 기업/i);
-  expect(linkElement).toBeInTheDocument();
+  await waitFor(() => {
+    const linkElement = screen.getByText(/애플/i);
+    expect(linkElement).toBeInTheDocument();
+  });
 });
