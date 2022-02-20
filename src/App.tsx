@@ -4,8 +4,6 @@ import Typography from '@mui/material/Typography';
 
 // @ts-ignore
 import PublicGoogleSheetsParser from 'public-google-sheets-parser';
-// @ts-ignore
-import Spinner from 'react-spinkit';
 
 import StockList from './components/StockList';
 
@@ -52,7 +50,7 @@ const App = () => {
           {today()} <a href="https://github.com/hibuz/hibuz.github.io/issues/new" style={{textDecoration: 'none'}}>❔</a>
         </Typography>
       </Toolbar>
-      {stockList != null ? <StockList rows={stockList}/> : <span style={{ margin: 30 }}>데이터 조회 중... <Spinner name='pacman' color="coral"/></span>} 
+      {stockList != null ? <StockList rows={stockList}/> : <span style={{ margin: 30 }}>데이터 조회 중...</span>} 
     </div>
   )
 }
