@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid, ColDef, CellParams, RowParams } from '@material-ui/data-grid';
 
@@ -55,7 +54,7 @@ function Company(props: any){
     img = 'https://' + props.logo + '/favicon.ico';
   }
   return <div><img width="15" src={img} alt={props.name}/> <span>{props.name}</span></div>
-};
+}
 
 const useStyles = makeStyles({
   root: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -52,7 +52,7 @@ const App = () => {
           {today()} <a href="https://github.com/hibuz/hibuz.github.io/issues/new" style={{textDecoration: 'none'}}>❔</a>
         </Typography>
       </Toolbar>
-      {stockList != null ? <StockList rows={stockList}/> : <p style={{ margin: 30 }}>데이터 조회중... <Spinner name='pacman' color="coral"/></p>} 
+      {stockList != null ? <StockList rows={stockList}/> : <span style={{ margin: 30 }}>데이터 조회 중... <Spinner name='pacman' color="coral"/></span>} 
     </div>
   )
 }
